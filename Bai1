@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Bai1
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int quantity = 0;
+            decimal price = 0;
+            decimal totalPrice = 0;
+            Console.OutputEncoding = Encoding.Unicode;
+            Console.InputEncoding = Encoding.Unicode;
+            // Nhập số lượng sản phẩm
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Nhập số lượng sản phẩm: ");
+                    quantity = int.Parse(Console.ReadLine());
+
+                    if (quantity < 0)
+                    {
+                        throw new Exception("Số lượng sản phẩm không thể là số âm. Vui lòng nhập lại.");
+                    }
+                    break; // Thoát vòng lặp nếu nhập hợp lệ
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Vui lòng nhập một số nguyên hợp lệ.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            // Nhập giá của một sản phẩm
+            while (true)
+            {
+                try
+                {
+                    Console.Write("Nhập giá của một sản phẩm: ");
+                    price = decimal.Parse(Console.ReadLine());
+
+                    if (price < 0)
+                    {
+                        throw new Exception("Giá không thể là số âm. Vui lòng nhập lại.");
+                    }
+                    break; // Thoát vòng lặp nếu nhập hợp lệ
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Vui lòng nhập một số hợp lệ.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            // Tính tổng giá trị đơn hàng
+            totalPrice = quantity * price;
+
+            // In ra tổng giá trị đơn hàng
+            Console.WriteLine($"Tổng giá trị đơn hàng là: {totalPrice}");
+        }
+    }
+}
